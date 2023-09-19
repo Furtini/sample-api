@@ -1,12 +1,14 @@
 import { Client } from '../../models/client'
 import { ClientUsecase as ClientUsecaseInterface } from '../../interfaces/usecases/clients'
-import { mockClient } from '../../mocks/client'
+import { ClientRepository } from '../../interfaces/repositories/client'
 
 export class ClientUsecase implements ClientUsecaseInterface {
-  async list(): Promise<Client[]> {
-    // decrypt all data
-    const clients = Promise.resolve([mockClient(), mockClient()])
+  constructor(private readonly clientRepo: ClientRepository) {}
 
+  async list(): Promise<Client[]> {
+    const clients = await this.clientRepo.findAll()
+
+    // decrypt all data
     return clients
   }
 }
