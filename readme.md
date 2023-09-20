@@ -70,6 +70,12 @@ GET: /clients
 
 Return all clients created
 
+### Show a client by id
+
+GET: /clients/:id
+
+Return the client or not found
+
 ### Create a new client
 
 POST: /clients

@@ -8,11 +8,17 @@ import { CreateController } from '../../presentation/controllers/clients/create'
 import { clientSchema } from '../../presentation/schemas/client'
 import { CipherRepository } from '../../infra/repositories/cipher'
 import { authorization } from '../../presentation/middlewares/authorization'
+import { ShowController } from '../../presentation/controllers/clients/show'
 
 export default (app: FastifyInstance, _options: any, done: any): void => {
   app.get('/clients', {
     preHandler: authorization,
     handler: adaptRoute(new ListController(makeClientUsecase()))
+  })
+
+  app.get('/clients/:id', {
+    preHandler: authorization,
+    handler: adaptRoute(new ShowController(makeClientUsecase()))
   })
 
   app.post('/clients', {

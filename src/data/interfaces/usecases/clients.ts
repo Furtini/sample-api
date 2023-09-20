@@ -6,5 +6,6 @@ export interface CreatePayload {
 
 export interface ClientUsecase {
   create: (payload: CreatePayload) => Promise<Client>
+  show: (id: number) => Promise<Client>
   list: () => Promise<Client[]>
 }

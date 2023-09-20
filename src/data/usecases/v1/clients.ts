@@ -18,6 +18,15 @@ export class ClientUsecase implements ClientUsecaseInterface {
     return clients.map((client) => this.decryptData(client))
   }
 
+  async show(id: number): Promise<Client> {
+    const client = await this.clientRepo.findById(id)
+    if (client == null) {
+      throw new Error('Client not found')
+    }
+
+    return this.decryptData(client)
+  }
+
   async create(payload: CreatePayload): Promise<any> {
     try {
       const createdAt = new Date()

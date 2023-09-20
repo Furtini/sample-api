@@ -11,6 +11,14 @@ export class ClientRepository implements ClientRepositoryInterface {
     return results
   }
 
+  async findById(id: number): Promise<Client | undefined> {
+    const query = `SELECT * FROM clients WHERE id = ?;`
+
+    const db = await getDb()
+    const result = await db.get<Client>(query, id)
+    return result
+  }
+
   async createOne(data: Omit<Client, 'id'>): Promise<number | undefined> {
     const query = `
     INSERT INTO clients (document, name, email, address, createdAt)
