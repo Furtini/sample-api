@@ -5,6 +5,7 @@ import {
 } from '../../interfaces/usecases/clients'
 import { ClientRepository } from '../../interfaces/repositories/client'
 import { CipherRepository } from '../../interfaces/repositories/cipher'
+import { NotFoundError } from '../../../errors'
 
 export class ClientUsecase implements ClientUsecaseInterface {
   constructor(
@@ -21,7 +22,7 @@ export class ClientUsecase implements ClientUsecaseInterface {
   async show(id: number): Promise<Client> {
     const client = await this.clientRepo.findById(id)
     if (client == null) {
-      throw new Error('Client not found')
+      throw new NotFoundError('Client not found')
     }
 
     return this.decryptData(client)
