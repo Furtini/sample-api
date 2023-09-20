@@ -96,3 +96,9 @@ Payload example:
 ```
 
 Returns the new created client or throw a erro when the document already exists in the database.
+
+## Improvments
+
+* Add erro handler
+* Add authorization Routes
+* Improve cipher methods and class
