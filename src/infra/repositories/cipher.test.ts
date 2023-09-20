@@ -2,21 +2,20 @@ import { describe, it, expect } from '@jest/globals'
 import { CipherRepository } from './cipher'
 
 describe('#Cipher test', () => {
-  const cipher = new CipherRepository(['a', 'b'])
+  const repo = new CipherRepository()
 
-  describe('#Cypher', () => {
-    it('Should cipher a object', () => {
-      const obj = {
-        a: 'some',
-        b: 'test'
-      }
+  it('Should cipher a string', () => {
+    const test = 'sample'
 
-      const result = cipher.cypher(obj)
+    const result = repo.cypher(test)
+    expect(result).not.toBe(test)
+  })
 
-      expect(result).toHaveProperty('a')
-      expect(result).toHaveProperty('b')
+  it('Should decipher a string', () => {
+    const test = 'sample'
+    const cipher = repo.cypher(test)
 
-      expect(result['a']).not.toBe(obj.a)
-    })
+    const result = repo.decypher(cipher)
+    expect(result).toBe(test)
   })
 })

@@ -10,4 +10,23 @@ export class ClientRepository implements ClientRepositoryInterface {
     const results = await db.all<Client[]>(query)
     return results
   }
+
+  async createOne(data: Omit<Client, 'id'>): Promise<number | undefined> {
+    const query = `
+    INSERT INTO clients (document, name, email, address, createdAt)
+    VALUES (?, ?, ?, ?, ?);
+    `
+
+    const db = await getDb()
+    const result = await db.run(
+      query,
+      data.document,
+      data.name,
+      data.email,
+      data.address,
+      data.createdAt?.toISOString()
+    )
+
+    return result.lastID
+  }
 }

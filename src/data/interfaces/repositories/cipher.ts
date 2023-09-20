@@ -1,4 +1,4 @@
 export interface CipherRepository {
-  cypher: (data: Record<string, any>) => Record<string, any>
-  decypher: (data: Record<string, any>) => Record<string, any>
+  cypher: (data: string | undefined) => string | undefined
+  decypher: (data: string | undefined) => string | undefined
 }
