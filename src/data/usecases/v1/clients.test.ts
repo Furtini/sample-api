@@ -1,7 +1,7 @@
 import { jest, describe, it, expect, afterAll } from '@jest/globals'
 
 import { ClientUsecase } from './clients'
-import { ClientRepository } from '../../../infra/db/repositories/client'
+import { ClientRepository } from '../../../infra/db/clientsRepository'
 
 describe('#Client usecase', () => {
   afterAll(() => {
