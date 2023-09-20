@@ -1,7 +1,8 @@
 export enum ErrorCodes {
   bad_request,
   unauthorized,
-  resource_not_found
+  resource_not_found,
+  resource_duplicated
 }
 
 export interface ErrorData {

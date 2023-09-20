@@ -1,10 +1,10 @@
-import { FastifyReply, FastifyRequest } from 'fastify'
+import { FastifyRequest } from 'fastify'
 import jwt from 'jsonwebtoken'
-import { UnauthorizedError } from '../../errors/unauthorizedError'
+import { UnauthorizedError } from '../../errors'
 
 const jwt_secret_key = 'mrGreen'
 
-export async function authorization(req: FastifyRequest, res: FastifyReply) {
+export async function authorization(req: FastifyRequest) {
   if (req.method === 'OPTIONS') return
 
   if (req.headers.authorization == null) {

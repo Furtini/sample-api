@@ -5,7 +5,7 @@ import {
 } from '../../interfaces/usecases/clients'
 import { ClientRepository } from '../../interfaces/repositories/client'
 import { CipherRepository } from '../../interfaces/repositories/cipher'
-import { NotFoundError } from '../../../errors'
+import { BadRequestError, NotFoundError } from '../../../errors'
 
 export class ClientUsecase implements ClientUsecaseInterface {
   constructor(
@@ -37,7 +37,9 @@ export class ClientUsecase implements ClientUsecaseInterface {
       return { id: newClientId, ...payload.data, createdAt }
     } catch (error) {
       console.error(error)
-      throw error
+      throw new BadRequestError({
+        message: 'Unable to create new client'
+      })
     }
   }
 
