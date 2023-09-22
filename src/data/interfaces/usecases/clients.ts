@@ -1,4 +1,4 @@
-import { Client } from '../../models/client'
+import { type Client } from '../../models/client'
 
 export interface CreatePayload {
   data: Omit<Client, 'id' | 'createdAt'>

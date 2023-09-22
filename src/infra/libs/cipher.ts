@@ -1,6 +1,6 @@
 import * as crypto from 'crypto'
 
-import { CipherRepository as CipherRepositoryInterface } from '../../data/interfaces/repositories/cipher'
+import type { CipherRepository as CipherRepositoryInterface } from '../../data/interfaces/libs/cipher'
 import { config } from '../../configs/cipher'
 
 export class CipherRepository implements CipherRepositoryInterface {

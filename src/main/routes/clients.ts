@@ -1,4 +1,4 @@
-import { FastifyInstance } from 'fastify'
+import type { FastifyInstance } from 'fastify'
 
 import { ListController } from '../../presentation/controllers/clients/list'
 import { adaptRoute } from '../adapters/fastify_route'
@@ -6,7 +6,7 @@ import { ClientUsecase } from '../../data/usecases/v1/clients'
 import { ClientRepository } from '../../infra/db/clientsRepository'
 import { CreateController } from '../../presentation/controllers/clients/create'
 import { clientSchema } from '../../presentation/schemas/client'
-import { CipherRepository } from '../../infra/repositories/cipher'
+import { CipherRepository } from '../../infra/libs/cipher'
 import { authorization } from '../../presentation/middlewares/authorization'
 import { ShowController } from '../../presentation/controllers/clients/show'
 
@@ -30,6 +30,6 @@ export default (app: FastifyInstance, _options: any, done: any): void => {
   done()
 }
 
-function makeClientUsecase() {
+function makeClientUsecase(): any {
   return new ClientUsecase(new ClientRepository(), new CipherRepository())
 }

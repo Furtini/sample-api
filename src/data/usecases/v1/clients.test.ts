@@ -2,7 +2,7 @@ import { jest, describe, it, expect, afterAll } from '@jest/globals'
 
 import { ClientUsecase } from './clients'
 import { ClientRepository } from '../../../infra/db/clientsRepository'
-import { CipherRepository } from '../../../infra/repositories/cipher'
+import { CipherRepository } from '../../../infra/libs/cipher'
 import { mockClient } from '../../mocks/client'
 
 describe('#Client usecase', () => {
@@ -41,10 +41,10 @@ describe('#Client usecase', () => {
 
       expect(results).toHaveLength(2)
 
-      for (let id in results) {
-        expect(results[id]).toHaveProperty('id', mocks[id].id)
-        expect(results[id]).toHaveProperty('document', mocks[id].document)
-      }
+      results.forEach((res, id) => {
+        expect(res).toHaveProperty('id', mocks[id].id)
+        expect(res).toHaveProperty('document', mocks[id].document)
+      })
 
       expect(findAllSpy).toHaveBeenCalledTimes(1)
       expect(decypherSpy).toHaveBeenCalledTimes(8)

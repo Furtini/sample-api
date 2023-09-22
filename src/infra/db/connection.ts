@@ -1,11 +1,11 @@
-import { open } from 'sqlite'
+import { type Database, open } from 'sqlite'
 import sqlite3 from 'sqlite3'
 
 import { clientTableQuery } from './setup'
 
 sqlite3.verbose()
 
-export async function getDb() {
+export async function getDb(): Promise<Database> {
   const db = await open({ filename: '_database/green.sqlite', driver: sqlite3.Database })
 
   await db.exec('PRAGMA case_sensitive_like=OFF;')

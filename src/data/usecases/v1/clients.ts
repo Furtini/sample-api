@@ -1,10 +1,10 @@
-import { Client } from '../../models/client'
-import {
+import type { Client } from '../../models/client'
+import type {
   ClientUsecase as ClientUsecaseInterface,
   CreatePayload
 } from '../../interfaces/usecases/clients'
-import { ClientRepository } from '../../interfaces/repositories/client'
-import { CipherRepository } from '../../interfaces/repositories/cipher'
+import type { ClientRepository } from '../../interfaces/repositories/client'
+import type { CipherRepository } from '../../interfaces/libs/cipher'
 import { BadRequestError, NotFoundError } from '../../../errors'
 
 export class ClientUsecase implements ClientUsecaseInterface {

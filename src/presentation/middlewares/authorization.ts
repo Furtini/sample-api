@@ -1,10 +1,10 @@
-import { FastifyRequest } from 'fastify'
+import type { FastifyRequest } from 'fastify'
 import jwt from 'jsonwebtoken'
+
 import { UnauthorizedError } from '../../errors'
+import { config } from '../../configs/auth'
 
-const jwt_secret_key = 'mrGreen'
-
-export async function authorization(req: FastifyRequest) {
+export function authorization(req: FastifyRequest): void {
   if (req.method === 'OPTIONS') return
 
   if (req.headers.authorization == null) {
@@ -16,9 +16,9 @@ export async function authorization(req: FastifyRequest) {
   const token = req.headers.authorization.split(' ')[1]
 
   try {
-    const credentials = jwt.verify(token, jwt_secret_key) as Record<string, string>
+    const credentials = jwt.verify(token, config.jwt_key) as Record<string, string>
 
-    if (credentials.name !== 'mrGreen') {
+    if (credentials.name !== 'user name') {
       throw new UnauthorizedError({
         message: 'Invalid credentials'
       })

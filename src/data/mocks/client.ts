@@ -1,4 +1,4 @@
-import { Client } from '../models/client'
+import { type Client } from '../models/client'
 
 let id = 1
 

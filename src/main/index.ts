@@ -1,8 +1,8 @@
 import dotenv from 'dotenv'
-dotenv.config()
 
 import { app } from './app'
 import { config } from '../configs/api'
+dotenv.config()
 
 async function start(): Promise<void> {
   await app.setup()

@@ -1,9 +1,9 @@
 const jwt = require('jsonwebtoken')
 
-const key = 'mrGreen'
+const key = 'secret'
 
 const payload = {
-  name: 'mrGreen'
+  name: 'user name'
 }
 
 const token = jwt.sign(payload, key, { algorithm: 'HS256', expiresIn: '10d' })

@@ -1,4 +1,4 @@
-import { ApplicationError, ErrorCodes, ErrorData } from './applicationError'
+import { ApplicationError, ErrorCodes, type ErrorData } from './applicationError'
 
 export class UnauthorizedError extends ApplicationError {
   constructor({ message, errorCode }: ErrorData) {

@@ -1,5 +1,5 @@
-import { ClientRepository as ClientRepositoryInterface } from '../../data/interfaces/repositories/client'
-import { Client } from '../../data/models/client'
+import { type ClientRepository as ClientRepositoryInterface } from '../../data/interfaces/repositories/client'
+import { type Client } from '../../data/models/client'
 import { ErrorCodes, BadRequestError } from '../../errors'
 import { getDb } from './connection'
 
