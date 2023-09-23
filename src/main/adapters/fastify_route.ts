@@ -1,10 +1,19 @@
 import type { FastifyReply, FastifyRequest } from 'fastify'
 
-import type { Controller } from '../../presentation/interfaces'
+import type { Controller, HttpRequest } from '../../presentation/interfaces'
 
 export function adaptRoute(controller: Controller) {
   return async (req: FastifyRequest, res: FastifyReply) => {
-    const response = await controller.handle(req)
+    const request: HttpRequest = {
+      body: req.body as Record<string, any>,
+      params: req.params as Record<string, any>,
+      query: req.query as Record<string, any>,
+      headers: req.headers,
+      method: req.method,
+      url: req.url
+    }
+
+    const response = await controller.handle(request)
 
     const { statusCode, body } = response
 

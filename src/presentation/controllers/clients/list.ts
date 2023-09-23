@@ -1,6 +1,6 @@
-import { type ClientUsecase } from '../../../data/interfaces/usecases/clients'
+import type { ClientUsecase } from '../../../data/interfaces/usecases/clients'
 import { ok } from '../../../presentation/helpers/http_responses'
-import { type Controller, type HttpResponse } from '../../interfaces'
+import type { Controller, HttpResponse } from '../../interfaces'
 
 export class ListController implements Controller {
   constructor(private readonly usecase: ClientUsecase) {}

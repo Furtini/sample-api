@@ -1,4 +1,4 @@
-import { type HttpResponse } from '../interfaces'
+import type { HttpResponse } from '../interfaces'
 
 export function ok(data: any = {}): HttpResponse {
   return {
