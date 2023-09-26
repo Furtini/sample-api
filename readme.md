@@ -1,4 +1,4 @@
-# MrGreen Api sample
+# REST Api sample
 
 Simple API Design to manage new clients.
 
@@ -99,10 +99,8 @@ Returns the new created client or throw a erro when the document already exists 
 
 ## Improvments
 
-* Improve error handler
 * Add authorization Routes
 * Improve cipher methods and class
 * Improve import paths
 * Improve db connection and tests
-
 
